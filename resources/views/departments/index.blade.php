@@ -12,6 +12,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>S.N</th>
                 <th>Department</th>
                 <th>Actions</th>
             </tr>
@@ -19,6 +20,7 @@
         <tbody>
             @foreach ($departments as $department)
             <tr>
+                <td scope="row">{{ $i++ }}</td>
                 <td>{{ $department->name }}</td>
                 <td>
                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editDepartmentModal{{ $department->id }}">Edit</button>

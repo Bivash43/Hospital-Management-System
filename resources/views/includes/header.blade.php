@@ -55,13 +55,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('doctors.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
                                 <p>View All Doctors</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('doctors.create') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
                                 <p>Add New Doctors</p>
                             </a>
