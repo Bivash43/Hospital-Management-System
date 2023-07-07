@@ -30,7 +30,7 @@
             <p class="login-box-msg h6">Sign in to start your session</p>
             @include('includes.message')
 
-            <form action="#" method="post">
+            <form action="{{ route('login') }}" method="post">
                 {{ csrf_field() }}
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Email">
@@ -50,12 +50,12 @@
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        {{--                        <div class="icheck-primary">--}}
-                        {{--                            <input type="checkbox" id="remember">--}}
-                        {{--                            <label for="remember">--}}
-                        {{--                                Remember Me--}}
-                        {{--                            </label>--}}
-                        {{--                        </div>--}}
+                        <div class="icheck-primary">
+                           <input type="checkbox" id="remember">
+                            <label for="remember">
+                            Remember Me
+                            </label>
+                        </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
@@ -67,12 +67,14 @@
 
 
 
-            {{--            <p class="mb-1">--}}
-            {{--                <a href="forgot-password.html">I forgot my password</a>--}}
-            {{--            </p>--}}
-            {{--            <p class="mb-0">--}}
-            {{--                <a href="register.html" class="text-center">Register a new membership</a>--}}
-            {{--            </p>--}}
+            <p class="mb-1">
+                @if (Route::has('password.request'))                    
+                <a href="{{ route('password.request') }}">I forgot my password</a>
+                @endif
+            </p>
+            <p class="mb-0">
+                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+            </p>
         </div>
         <!-- /.card-body -->
     </div>

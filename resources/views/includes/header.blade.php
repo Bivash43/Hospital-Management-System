@@ -44,6 +44,38 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-user-md" style="color: #fafafa;"></i>
+                        <p>
+                            Doctors
+                            <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
+                                <p>View All Doctors</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
+                                <p>Add New Doctors</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon far fa-edit" style="color: #ffffff;"></i>
+                                <p>Edit Doctors</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
 {{--                @if(auth()->user()->hasPermission('list_express_service'))--}}
 {{--                <li class="nav-item">--}}
 {{--                    <a href="{{route('admin.express_service.index')}}" class="nav-link {{ route('admin.express_service.index') == url()->current() ? 'active': ''}}">--}}
@@ -53,7 +85,7 @@
 {{--                </li>--}}
 {{--                @endif--}}
                 <li class="nav-item">
-                    <form action="#" method="post">
+                    <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-logout nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
