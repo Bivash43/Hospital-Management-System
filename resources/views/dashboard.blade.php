@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="col-12">
-                <h5> @lang('Welcome to the Dashboard')</h5>
+                <h1>Welcome to Dashboard</h1>
             </div>
 
             <!-- /.row -->
