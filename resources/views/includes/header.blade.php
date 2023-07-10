@@ -71,7 +71,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-hospital-user" style="color: #ffffff;"></i>
+                        <i class="nav-icon fa fa-solid fa-hospital-user" style="color: #ffffff;"></i>
                         <p>
                             Patients
                             <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
@@ -93,13 +93,36 @@
                     </ul>
                 </li>
 
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-solid fa-calendar-check" style="color: #ffffff;"></i></i>
+                        <p>
+                            Appointments
+                            <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('appointments.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
+                                <p>View All Appointment</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('appointments.create') }}" class="nav-link ">
+                                <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
+                                <p>Add Appointments</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('departments.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-building" style="color: #ffffff;"></i>
                         <p>Department</p>
                     </a>
                 </li>
-
 
 {{--                @if(auth()->user()->hasPermission('list_express_service'))--}}
 {{--                <li class="nav-item">--}}

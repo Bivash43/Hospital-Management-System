@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/departments', DepartmentController::class);
     Route::resource('/doctors', DoctorController::class);
     Route::resource('/patients', PatientController::class);
+    Route::resource('/appointments', AppointmentController::class);
 });
 
 
