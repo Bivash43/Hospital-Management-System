@@ -18,6 +18,9 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $i = 1;
+            @endphp
             @foreach ($departments as $department)
             <tr>
                 <td scope="row">{{ $i++ }}</td>

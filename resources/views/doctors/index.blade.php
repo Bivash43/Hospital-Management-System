@@ -6,7 +6,7 @@
 <div class="card card-default color-palette-box">
         <div class="card-header">
             <h3 class="card-title">
-                <h3>Doctorss</h3>
+                <h3>Doctors</h3>
             </h3>
         </div>
         <div class="card-body">
@@ -33,9 +33,11 @@
                         @foreach ($doctors as $doctor)
                             <tr>
                                 <td scope="row">{{ $i++ }}</td>
-                                <td scope="row">{{ $doctor->image }}</td>
+                                <td scope="row"><img src="{{ asset('storage/images/' . $doctor->image) }}" alt="Doctor Image" style="max-width: 50px;"></td>
                                 <td scope="row">{{ $doctor->f_name }} {{ $doctor->l_name }}</td>
-                                <td scope="row">{{ $doctor->department }}</td>
+                                <td scope="row">@foreach ($doctor->departments as $dep )
+                                    {{ $dep->name }}
+                                @endforeach</td>
                                 <td scope="row">{{ $doctor->designation }}</td>
                                 <td scope="row">{{ $doctor->education }}</td>
                                 <td scope="row">{{ $doctor->mobile }}</td>
@@ -43,27 +45,20 @@
                                 <td scope="row">{{ $doctor->created_at }}</td>
 
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal"
-                                        data-target="#editmodal">
-                                        <i class="fas fa-edit"></i>
-                                    </button></a>
-                                    <form action="" method="POST" class="d-inline">
+                                    <a href="" class="btn btn-primary">
+                                        Edit
+                                    </a>
+                                    <form action="" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger ml-2"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-danger ml-2">Delete
                                     </form>
                                 </td>
                             </tr>
-                            <!-- Add more rows for additional departments as needed -->
-
-
                     </tbody>
                     @endforeach
                 </table>
             </div>
-
-            <!-- /.row -->
         </div>
-        <!-- /.card-body -->
         </div>
 @endsection
