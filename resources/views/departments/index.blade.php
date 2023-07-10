@@ -7,14 +7,13 @@
 <div class="card card-default color-palette-box">
         <div class="card-header">
             <h3 class="card-title">
-                <h3>Patients</h3>
+                <h3>Departments</h3>
             </h3>
         </div>
         <div class="card-body">
             <div class="col-12">
                 <div class="container">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1>Departments</h1>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>
                         </div>
 

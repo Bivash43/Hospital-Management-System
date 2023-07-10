@@ -63,7 +63,7 @@ class AppointmentController extends Controller
         $patients = Patient::all();
         $doctors = Doctor::all();
         $appointment = Appointment::findOrFail($id);
-        return view('appointments.index', compact('appointment', 'patients', 'doctors'));
+        return view('appointments.create', compact('appointment', 'patients', 'doctors'));
     }
 
     public function update(Request $request, string $id)
