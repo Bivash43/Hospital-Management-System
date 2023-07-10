@@ -6,7 +6,7 @@
 <div class="card card-default color-palette-box">
         <div class="card-header">
             <h3 class="card-title">
-                <h3>Doctors</h3>
+                <h3>Patients</h3>
             </h3>
         </div>
         <div class="card-body">
@@ -17,12 +17,12 @@
                             <th scope="col">S.N</th>
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Department</th>
-                            <th scope="col">Designation</th>
-                            <th scope="col">Degree</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Age</th>
                             <th scope="col">Mobile</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Joining Date</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">Blood Group</th>
+                            <th scope="col">Treatment</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,25 +30,23 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($doctors as $doctor)
+                        @foreach ($patients as $patient)
                             <tr>
                                 <td scope="row">{{ $i++ }}</td>
-                                <td scope="row"><img src="{{ asset('storage/images/' . $doctor->image) }}" alt="Doctor Image" style="max-width: 50px;"></td>
-                                <td scope="row">{{ $doctor->f_name }} {{ $doctor->l_name }}</td>
-                                <td scope="row">@foreach ($doctor->departments as $dep )
-                                    {{ $dep->name }}
-                                @endforeach</td>
-                                <td scope="row">{{ $doctor->designation }}</td>
-                                <td scope="row">{{ $doctor->education }}</td>
-                                <td scope="row">{{ $doctor->mobile }}</td>
-                                <td scope="row">{{ $doctor->email }}</td>
-                                <td scope="row">{{ $doctor->created_at }}</td>
+                                <td scope="row"><img src="{{ asset('storage/images/' . $patient->image) }}" alt="patient Image" style="max-width: 50px;"></td>
+                                <td scope="row">{{ $patient->f_name }} {{ $patient->l_name }}</td>
+                                <td scope="row">{{ $patient->gender }}</td>
+                                <td scope="row">{{ $patient->age }}</td>
+                                <td scope="row">{{ $patient->mobile }}</td>
+                                <td scope="row">{{ $patient->dob }}</td>
+                                <td scope="row">{{ $patient->blood_group }}</td>
+                                <td scope="row">{{ $patient->Treatment }}</td>
 
                                 <td>
-                                    <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-primary">
+                                    <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary">
                                         Edit
                                     </a>
-                                    <form action="{{ route('doctors.destroy' , $doctor->id) }}" method="POST">
+                                    <form action="{{ route('patients.destroy' , $patient->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">Delete

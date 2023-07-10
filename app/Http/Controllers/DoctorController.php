@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
 {
@@ -66,9 +67,61 @@ class DoctorController extends Controller
         return redirect()->back()->with('success', 'Doctor information has been stored successfully.');
     }
 
-    public function edit(int $id)
+    public function edit(string $id)
     {
-        $doctors = Doctor::all($id);
-        return view('doctors.createDoctor', compact('doctors'));
+        $doctor = Doctor::findOrFail($id);
+        $departments = Department::all();
+        return view('doctors.createDoctor', compact('doctor', 'departments'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+
+        $validatedData = $request->validate([
+            'f_name' => 'required',
+            'l_name' => 'required',
+            'gender' => 'required',
+            'mobile' => 'required',
+            'password' => 'required',
+            'department' => 'required',
+            'designation' => 'required',
+            'address' => 'required',
+            'email' => 'required|email',
+            'dob' => 'required|date',
+            'education' => 'required',
+            'image' => 'image',
+
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/images', $imageName);
+        }
+
+        $doctor = Doctor::findOrFail($id);
+        $doctor->f_name = $validatedData['f_name'];
+        $doctor->l_name = $validatedData['l_name'];
+        $doctor->gender = $validatedData['gender'];
+        $doctor->mobile = $validatedData['mobile'];
+        $doctor->password = bcrypt($validatedData['password']);
+        $doctor->designation = $validatedData['designation'];
+        $doctor->address = $validatedData['address'];
+        $doctor->email = $validatedData['email'];
+        $doctor->dob = $validatedData['dob'];
+        $doctor->education = $validatedData['education'];
+        $doctor->image = $imageName ?? null;
+        $doctor->save();
+        $doctor->departments()->attach($validatedData['department']);
+
+        return redirect()->route('doctors.index')->with('success', 'Doctor information has been Updated successfully.');
+    }
+
+    public function destroy(string $id)
+    {
+        $doctor = Doctor::findOrFail($id);
+        $doctor->delete();
+        return redirect()->route('doctors.index')->with('success', 'Doctor Deleted');
     }
 }

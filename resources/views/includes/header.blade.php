@@ -66,10 +66,28 @@
                                 <p>Add New Doctors</p>
                             </a>
                         </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-hospital-user" style="color: #ffffff;"></i>
+                        <p>
+                            Patients
+                            <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon far fa-edit" style="color: #ffffff;"></i>
-                                <p>Edit Doctors</p>
+                            <a href="{{ route('patients.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
+                                <p>View All Patients</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('patients.create') }}" class="nav-link ">
+                                <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
+                                <p>Add New Patients</p>
                             </a>
                         </li>
                     </ul>
