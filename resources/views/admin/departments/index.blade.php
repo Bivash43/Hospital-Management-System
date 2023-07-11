@@ -43,7 +43,7 @@
                                 </td>
                             </tr>
 
-                            @include('departments.editDepartment')
+                            @include('admin.departments.editDepartment')
 
                             @endforeach
                         </tbody>
@@ -54,7 +54,7 @@
 </div>
 @endsection
 
-@include('departments.createDepartment')
+@include('admin.departments.createDepartment')
 
 
 

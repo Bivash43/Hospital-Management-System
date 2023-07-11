@@ -10,12 +10,12 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('departments.index', compact('departments'));
+        return view('admin.departments.index', compact('departments'));
     }
 
     public function create()
     {
-        return view('departments.create');
+        return view('admin.departments.create');
     }
 
     public function store(Request $request)
@@ -30,7 +30,7 @@ class DepartmentController extends Controller
 
     public function edit(Department $department)
     {
-        return view('departments.edit', compact('department'));
+        return view('admin.departments.edit', compact('department'));
     }
 
     public function update(Request $request, Department $department)

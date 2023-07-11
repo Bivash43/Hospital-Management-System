@@ -12,13 +12,13 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::all();
-        return view('doctors.index', compact('doctors'));
+        return view('admin.doctors.index', compact('doctors'));
     }
 
     public function create()
     {
         $departments = Department::all();
-        return view('doctors.createDoctor', compact('departments'));
+        return view('admin.doctors.createDoctor', compact('departments'));
     }
 
     public function store(Request $request)
@@ -28,7 +28,6 @@ class DoctorController extends Controller
             'l_name' => 'required',
             'gender' => 'required',
             'mobile' => 'required',
-            'password' => 'required',
             'department' => 'required',
             'designation' => 'required',
             'address' => 'required',
@@ -53,7 +52,6 @@ class DoctorController extends Controller
         $doctor->l_name = $validatedData['l_name'];
         $doctor->gender = $validatedData['gender'];
         $doctor->mobile = $validatedData['mobile'];
-        $doctor->password = bcrypt($validatedData['password']);
         $doctor->designation = $validatedData['designation'];
         $doctor->address = $validatedData['address'];
         $doctor->email = $validatedData['email'];
@@ -71,7 +69,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::findOrFail($id);
         $departments = Department::all();
-        return view('doctors.createDoctor', compact('doctor', 'departments'));
+        return view('admin.doctors.createDoctor', compact('doctor', 'departments'));
     }
 
     public function update(Request $request, string $id)
@@ -82,7 +80,6 @@ class DoctorController extends Controller
             'l_name' => 'required',
             'gender' => 'required',
             'mobile' => 'required',
-            'password' => 'required',
             'department' => 'required',
             'designation' => 'required',
             'address' => 'required',
@@ -105,7 +102,6 @@ class DoctorController extends Controller
         $doctor->l_name = $validatedData['l_name'];
         $doctor->gender = $validatedData['gender'];
         $doctor->mobile = $validatedData['mobile'];
-        $doctor->password = bcrypt($validatedData['password']);
         $doctor->designation = $validatedData['designation'];
         $doctor->address = $validatedData['address'];
         $doctor->email = $validatedData['email'];

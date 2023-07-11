@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('l_name');
             $table->enum('gender', ['male', 'female', 'others']);
             $table->bigInteger('mobile');
-            $table->string('password')->hash();
             $table->string('designation');
             $table->string('address');
             $table->string('email')->unique();

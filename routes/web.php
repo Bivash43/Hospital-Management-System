@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+Route::get('/form', function () {
+    return view('auth.register1');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,6 +41,19 @@ Route::middleware('auth')->group(function () {
     Route::resource('/patients', PatientController::class);
     Route::resource('/appointments', AppointmentController::class);
 });
+
+Route::group(['middleware' => 'role.auth:admin'], function () {
+    // Routes accessible only to admins
+});
+
+Route::group(['middleware' => 'role.auth:doctor'], function () {
+    // Routes accessible only to users
+});
+
+Route::group(['middleware' => 'role.auth:patient'], function () {
+    // Routes accessible only to users
+});
+
 
 
 require __DIR__ . '/auth.php';

@@ -34,7 +34,7 @@
                 {{ csrf_field() }}
 
                 <div class="input-group mb-3">
-                    <input type="name" name="name" class="form-control" placeholder="Name">
+                    <input type="name" name="name" class="form-control" placeholder="UserName">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -66,6 +66,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="input-group mb-4">
+                    <select class="form-control" name="role" id="role" required>
+                        <option value="doctor">Doctor</option>
+                        <option value="patient">Patient</option>
+                    </select>
+                </div>
+
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-4">
@@ -76,7 +83,7 @@
                     </div>
                     <!-- /.col -->
                 </div>
-            </form>            
+            </form>
         </div>
         <!-- /.card-body -->
     </div>

@@ -54,10 +54,14 @@
                     <input type="text" class="form-control" name="age" id="age" required value="{{ isset($patient) ? $patient->age : old('age') }}">
                 </div>
 
+                @if (empty($user))
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" required value="{{ isset($patient) ? $patient->email : old('email') }}">
                 </div>
+                @else
+                    <input type="hidden" name="email" id="email" value="{{ $user->email }}">
+                @endif
 
                 <div class="form-group">
                     <label for="marital_status">Marital status</label>

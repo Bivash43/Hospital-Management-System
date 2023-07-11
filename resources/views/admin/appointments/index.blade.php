@@ -23,7 +23,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Doctor</th>
-                            <th scope="col">Injury/Condition</th>
+                            <th scope="col">Case</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

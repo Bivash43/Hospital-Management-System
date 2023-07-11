@@ -12,14 +12,14 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::all();
-        return view('appointments.index', compact('appointments'));
+        return view('admin.appointments.index', compact('appointments'));
     }
 
     public function create()
     {
         $patients = Patient::all();
         $doctors = Doctor::all();
-        return view('appointments.create', compact('patients', 'doctors'));
+        return view('admin.appointments.create', compact('patients', 'doctors'));
     }
 
     public function store(Request $request)
@@ -63,7 +63,7 @@ class AppointmentController extends Controller
         $patients = Patient::all();
         $doctors = Doctor::all();
         $appointment = Appointment::findOrFail($id);
-        return view('appointments.create', compact('appointment', 'patients', 'doctors'));
+        return view('admin.appointments.create', compact('appointment', 'patients', 'doctors'));
     }
 
     public function update(Request $request, string $id)

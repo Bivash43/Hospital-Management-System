@@ -11,12 +11,12 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::all();
-        return view('patients.index', compact('patients'));
+        return view('admin.patients.index', compact('patients'));
     }
 
     public function create()
     {
-        return view('patients.create');
+        return view('admin.patients.create');
     }
 
     public function store(Request $request)
@@ -70,7 +70,7 @@ class PatientController extends Controller
     public function edit(string $id)
     {
         $patient = Patient::findOrFail($id);
-        return view('patients.create', compact('patient'));
+        return view('admin.patients.create', compact('patient'));
     }
 
     public function update(Request $request, string $id)
