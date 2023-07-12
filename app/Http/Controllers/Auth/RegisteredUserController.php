@@ -21,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $departments = Department::all();
+        return view('auth.register', compact('departments'));
     }
 
     /**
@@ -31,6 +32,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -47,18 +49,7 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        //return redirect(RouteServiceProvider::HOME);
-
-        if ($user->role == 'doctor') {
-            $departments = Department::all();
-            return view('doctors.createDoctor', compact('user', 'departments'))->with('success', 'Add Additional Info');
-        }
-
-        if ($user->role == 'patient')
-            return view('patients.create', compact('user'))->with('success', 'Add Additional Info');
+        $departments = Department::all();
+        return view('auth.addInfo', compact('user', 'departments'));
     }
 }

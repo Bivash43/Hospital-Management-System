@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-Route::get('/form', function () {
-    return view('auth.register1');
-});
+Route::post('/info/addDoctor', [InfoController::class, 'storeDoctor'])->name('info.addDoctor');
+Route::post('/info/addPatient', [InfoController::class, 'storePatient'])->name('info.addPatient');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
