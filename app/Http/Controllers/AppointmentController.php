@@ -108,4 +108,18 @@ class AppointmentController extends Controller
         $appointment->delete();
         return redirect()->route('appointments.index')->with('success', 'Appointment Deleted Successfully');
     }
+
+    public function status(string $id, string $signal)
+    {
+        $appointment = Appointment::findOrFail($id);
+        // dd($appointment);
+        if ($signal == -1) {
+            $appointment->status = 'Rejected';
+            $appointment->save();
+        } elseif ($signal == 1) {
+            $appointment->status = 'Accepted';
+            $appointment->save();
+        }
+        return redirect()->back();
+    }
 }

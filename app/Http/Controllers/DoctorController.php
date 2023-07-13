@@ -64,6 +64,13 @@ class DoctorController extends Controller
         return redirect()->back()->with('success', 'Doctor information has been stored successfully.');
     }
 
+    public function show(string $email)
+    {
+        $doctor = Doctor::where('email', $email)->first();
+        $appointments = $doctor->appointments;
+        return view('doctorLayout.appointments.index', compact('appointments'));
+    }
+
     public function edit(string $id)
     {
         $doctor = Doctor::findOrFail($id);

@@ -49,7 +49,7 @@ Route::group(['middleware' => 'role.auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'role.auth:doctor'], function () {
-    // Routes accessible only to users
+    Route::post('/status/{id}/{signal}', [AppointmentController::class, 'status'])->name('change.status');
 });
 
 Route::group(['middleware' => 'role.auth:patient'], function () {

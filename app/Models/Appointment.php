@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Doctor;
+use Illuminate\Database\Eloquent\Factories\BelongsToManyRelationship;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Appointment extends Model
 {
@@ -16,6 +19,7 @@ class Appointment extends Model
         'case',
         'note',
         'report',
+        'status',
     ];
 
     public function doctors(): BelongsToMany

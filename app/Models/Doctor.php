@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Department;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Doctor extends Model
 {
@@ -30,8 +31,8 @@ class Doctor extends Model
         return $this->belongsToMany(Department::class, 'department_has_doctors');
     }
 
-    public function appointments(): HasMany
+    public function appointments(): BelongsToMany
     {
-        return $this->hasMany(Appointment::class, 'doctor_has_appointments');
+        return $this->belongsToMany(Appointment::class, 'doctor_has_appointments');
     }
 }
