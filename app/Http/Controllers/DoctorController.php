@@ -35,7 +35,6 @@ class DoctorController extends Controller
             'dob' => 'required|date',
             'education' => 'required',
             'image' => 'required|image',
-
         ]);
 
         // Handle file upload

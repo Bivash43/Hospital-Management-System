@@ -22,13 +22,19 @@
     @yield('css')
     <link rel="stylesheet" href="{{ asset('assets/dist/css/custom.css') }}">
     <link rel="stylesheet" href="{{asset('assets/dist/css/customBack.css')}}">
-    
+
 </head>
 <body class="hold-transition sidebar-mini layout-footer-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
     <div class="loading d-none" id="loader">Loading&#8230;</div>
+    @if (auth()->user()->role === "admin")
     @include('includes.header')
+    @elseif (auth()->user()->role ==="doctor")
+    @include('includes.headerDoctor')
+    @elseif (auth()->user()->role ==="patient")
+    @include('includes.headerPatient')
+    @endif
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper p-2">

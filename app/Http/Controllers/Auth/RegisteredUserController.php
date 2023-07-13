@@ -51,14 +51,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        //return redirect(RouteServiceProvider::HOME);
-
-        if ($user->role == 'doctor') {
-            $departments = Department::all();
-            return view('doctors.createDoctor', compact('user', 'departments'))->with('success', 'Add Additional Info');
-        }
-
-        if ($user->role == 'patient')
-            return view('patients.create', compact('user'))->with('success', 'Add Additional Info');
+        return redirect(RouteServiceProvider::HOME);
     }
 }

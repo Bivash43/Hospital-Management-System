@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PatientController;
+use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +22,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    if (auth()->user())
+        return redirect()->route('dashboard');
+    else
+        return view('auth.login');
 });
 
+// Route::post('/info/addDoctor', [InfoController::class, 'storeDoctor'])->name('info.addDoctor');
+// Route::post('/info/addPatient', [InfoController::class, 'storePatient'])->name('info.addPatient');
 
-Route::get('/form', function () {
-    return view('auth.register1');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Controller::class, 'redirect'])->middleware(['auth', 'verified', 'detail.auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,6 +56,10 @@ Route::group(['middleware' => 'role.auth:patient'], function () {
     // Routes accessible only to users
 });
 
+Route::get('/infoAdd', function () {
+    $departments = Department::all();
+    return view('doctorLayout.info', compact('departments'));
+});
 
 
 require __DIR__ . '/auth.php';
