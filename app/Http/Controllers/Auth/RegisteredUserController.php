@@ -24,6 +24,11 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    public function entry(string $name, string $email, string $role)
+    {
+        return view('auth.loginCredentials', compact('name', 'email', 'role'));
+    }
+
     /**
      * Handle an incoming registration request.
      *

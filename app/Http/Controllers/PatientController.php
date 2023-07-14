@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendRegistration;
 
 class PatientController extends Controller
 {
@@ -64,6 +66,12 @@ class PatientController extends Controller
         $patient->condition = $validatedData['condition'];
         $patient->image = $imageName ?? null;
         $patient->save();
+
+        if (auth()->user()->role == "admin") {
+            $emailAdd = $patient->email;
+            Mail::to($emailAdd)->send(new SendRegistration($patient, "patient"));
+        }
+
         return redirect()->back()->with('success', 'Patient information has been stored successfully.');
     }
 

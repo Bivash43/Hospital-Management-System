@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="text" class="form-control" name="age" id="age" required value="{{ isset($patient) ? $patient->age : old('age') }}">
+                    <input type="number" class="form-control" name="age" id="age" required value="{{ isset($patient) ? $patient->age : old('age') }}">
                 </div>
 
                 <div class="form-group">

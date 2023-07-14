@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendRegistration;
 use App\Models\Department;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Comment\Doc;
 
 class DoctorController extends Controller
@@ -60,6 +62,10 @@ class DoctorController extends Controller
         $doctor->save();
         $doctor->departments()->attach($validatedData['department']);
 
+        if (auth()->user()->role == "admin") {
+            $emailAdd = $doctor->email;
+            Mail::to($emailAdd)->send(new SendRegistration($doctor, "doctor"));
+        }
 
         return redirect()->back()->with('success', 'Doctor information has been stored successfully.');
     }

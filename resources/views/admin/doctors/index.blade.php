@@ -22,7 +22,7 @@
                             <th scope="col">Degree</th>
                             <th scope="col">Mobile</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Joining Date</th>
+                            {{-- <th scope="col">Joining Date</th> --}}
                             @if (auth()->user()->role ==="admin")
                             <th scope="col">Action</th>
                             @endif
@@ -46,7 +46,7 @@
                                 <td scope="row">{{ $doctor->education }}</td>
                                 <td scope="row">{{ $doctor->mobile }}</td>
                                 <td scope="row">{{ $doctor->email }}</td>
-                                <td scope="row">{{ $doctor->created_at->toDateString() }}</td>
+                                {{-- <td scope="row">{{ $doctor->created_at->toDateString() }}</td> --}}
                                 @if (auth()->user()->role ==="admin")
                                     <td scope="row">
                                         <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-primary btn-sm">

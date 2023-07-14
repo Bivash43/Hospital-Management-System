@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
@@ -61,6 +62,8 @@ Route::get('/infoAdd', function () {
     $departments = Department::all();
     return view('doctorLayout.info', compact('departments'));
 });
+
+Route::get('/userEntry/{name}/{email}/{role}', [RegisteredUserController::class, 'entry'])->name('new.register');
 
 
 require __DIR__ . '/auth.php';
