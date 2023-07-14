@@ -22,8 +22,9 @@
                             <th scope="col">Mobile</th>
                             <th scope="col">Date of Birth</th>
                             <th scope="col">Blood Group</th>
-                            <th scope="col">Treatment</th>
+                            @if (auth()->user()->role==="admin")
                             <th scope="col">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -40,21 +41,21 @@
                                 <td scope="row">{{ $patient->mobile }}</td>
                                 <td scope="row">{{ $patient->dob }}</td>
                                 <td scope="row">{{ $patient->blood_group }}</td>
-                                <td scope="row">{{ $patient->Treatment }}</td>
-
                                 <td>
-                                    <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary">
-                                        Edit
-                                    </a>
-                                    <form action="{{ route('patients.destroy' , $patient->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete
-                                    </form>
+                                    @if (auth()->user()->role==="admin")
+                                        <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary">
+                                            Edit
+                                        </a>
+                                        <form action="{{ route('patients.destroy' , $patient->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
             </div>
         </div>

@@ -53,7 +53,8 @@ Route::group(['middleware' => 'role.auth:doctor'], function () {
 });
 
 Route::group(['middleware' => 'role.auth:patient'], function () {
-    // Routes accessible only to users
+    Route::post('/patientAction/{id}/{signal}', [AppointmentController::class, 'patientAction'])->name('patient.action');
+    Route::get('/patientAction', [AppointmentController::class, 'book'])->name('book.appointment');
 });
 
 Route::get('/infoAdd', function () {

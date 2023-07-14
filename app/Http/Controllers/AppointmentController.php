@@ -22,6 +22,14 @@ class AppointmentController extends Controller
         return view('admin.appointments.create', compact('patients', 'doctors'));
     }
 
+    public function book()
+    {
+        $patient = Patient::where('email', auth()->user()->email)->first();
+        // dd($patients);
+        $doctors = Doctor::all();
+        return view('patientLayout.appointments.bookAppointment', compact('patient', 'doctors'));
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -29,7 +37,7 @@ class AppointmentController extends Controller
             'time' => 'required',
             'case' => 'required',
             'note' => 'required',
-            'report' => 'required|file',
+            'report' => 'required|file|mimes:pdf',
             'doctor' => 'required',
             'patient' => 'required',
 
@@ -120,6 +128,32 @@ class AppointmentController extends Controller
             $appointment->status = 'Accepted';
             $appointment->save();
         }
+
+        return redirect()->back();
+    }
+
+    public function patientAction(string $id, string $signal)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        if ($appointment->status === "Accepted" || $appointment->status === "Accepted - Cancelled" || $appointment->status === "Accepted - Confirmed") {
+            if ($signal == 2) {
+                $appointment->status = 'Accepted - Confirmed';
+                $appointment->save();
+            } elseif ($signal == 0) {
+                $appointment->status = 'Accepted - Cancelled';
+                $appointment->save();
+            }
+        } elseif ($signal == 2 && $appointment->status === "Cancelled") {
+            $appointment->status = 'Pending';
+            $appointment->save();
+        } elseif ($signal == 0) {
+            $appointment->status = 'Cancelled';
+            $appointment->save();
+        } else {
+            return redirect()->back()->with('error', 'First let the doctor accept the appointment');
+        }
+
         return redirect()->back();
     }
 }

@@ -18,16 +18,7 @@
                     @method('PUT')
                 @endif
 
-                @if (auth()->user()->role === "admin")
-                <div class="form-group">
-                    <label for="patient">Select Patient</label>
-                    <select class="form-control" name="patient[]" id="patient" required>
-                        @foreach ($patients as $patient )
-                            <option value="{{ $patient->id }}">{{ $patient->f_name }} {{ $patient->l_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                @endif
+                <input type="hidden" name="patient[]" id="doctor" value="{{ $patient->id }}" required>
 
                 <div class="form-group">
                     <label for="doctor">Consulting Doctor</label>

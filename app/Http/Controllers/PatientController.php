@@ -67,6 +67,13 @@ class PatientController extends Controller
         return redirect()->back()->with('success', 'Patient information has been stored successfully.');
     }
 
+    public function show(string $email)
+    {
+        $patient = Patient::where('email', $email)->first();
+        $appointments = $patient->appointments;
+        return view('patientLayout.appointments.index', compact('appointments'));
+    }
+
     public function edit(string $id)
     {
         $patient = Patient::findOrFail($id);

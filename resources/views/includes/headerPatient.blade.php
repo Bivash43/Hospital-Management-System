@@ -44,55 +44,6 @@
                         <p>Dashboard Patient</p>
                     </a>
                 </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-user-md" style="color: #fafafa;"></i>
-                        <p>
-                            Doctors
-                            <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('doctors.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
-                                <p>View All Doctors</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('doctors.create') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
-                                <p>Add New Doctors</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-solid fa-hospital-user" style="color: #ffffff;"></i>
-                        <p>
-                            Patients
-                            <i class="right fas fa-angle-left" style="color: #fafafa;"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('patients.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
-                                <p>View All Patients</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('patients.create') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
-                                <p>Add New Patients</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-solid fa-calendar-check" style="color: #ffffff;"></i></i>
@@ -103,18 +54,37 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('appointments.index') }}" class="nav-link">
+                            <a href="{{ route('patients.show' , auth()->user()->email) }}" class="nav-link">
                                 <i class="nav-icon fas fa-eye " style="color: #fafafa;"></i>
-                                <p>View All Appointment</p>
+                                <p>My Appointments</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('appointments.create') }}" class="nav-link ">
+                            <a href="{{ route('book.appointment') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-plus" style="color: #fafafa;"></i>
-                                <p>Add Appointments</p>
+                                <p>Book an Appointment</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('doctors.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-user-md" style="color: #fafafa;"></i>
+                        <p>
+                            Doctors
+                        </p>
+                    </a>
+
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('patients.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-solid fa-hospital-user" style="color: #ffffff;"></i>
+                        <p>
+                            Patients
+                        </p>
+                    </a>
                 </li>
 
                 <li class="nav-item">

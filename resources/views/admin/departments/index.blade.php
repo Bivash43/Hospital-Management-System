@@ -14,7 +14,9 @@
             <div class="col-12">
                 <div class="container">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>
+                        @if (auth()->user()->role==="admin")
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal">Add Department</button>
+                        @endif
                         </div>
 
                     <table class="table table-striped">
@@ -22,7 +24,9 @@
                             <tr>
                                 <th>S.N</th>
                                 <th>Department</th>
-                                <th>Actions</th>
+                                @if (auth()->user()->role==="admin")
+                                    <th>Actions</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -33,6 +37,7 @@
                             <tr>
                                 <td scope="row">{{ $i++ }}</td>
                                 <td>{{ $department->name }}</td>
+                                @if (auth()->user()->role==="admin")
                                 <td>
                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editDepartmentModal{{ $department->id }}">Edit</button>
                                     <form class="d-inline" action="{{ route('departments.destroy', $department->id) }}" method="POST">
@@ -41,6 +46,7 @@
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
 
                             @include('admin.departments.editDepartment')

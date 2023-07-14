@@ -44,13 +44,6 @@
                     <input type="text" class="form-control" name="mobile" id="mobile" required value="{{ isset($doctor) ? $doctor->mobile : old('mobile') }}">
                 </div>
 
-                @empty($user)
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
-                </div>
-                @endempty
-
                 <div class="form-group">
                     <label for="department">Department</label>
                     <select class="form-control" name="department[]" id="department" required>
@@ -75,16 +68,10 @@
                     <input type="text" class="form-control" name="address" id="address" required value="{{ isset($doctor) ? $doctor->address : old('address') }}">
                 </div>
 
-                @if (empty($user))
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" required value="{{ isset($doctor) ? $doctor->email : old('email') }}">
-                    </div>
-                @else
-                    <input type="hidden" name="email" id="email" value="{{ $user->email }}">
-
-                @endif
-
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" required value="{{ isset($doctor) ? $doctor->email : old('email') }}">
+                </div>
 
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>

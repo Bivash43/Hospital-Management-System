@@ -53,14 +53,14 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('doctors.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-user-md" style="color: #fafafa;"></i>
                         <p>Doctors</p>
                     </a>
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('patients.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-solid fa-hospital-user" style="color: #ffffff;"></i>
                         <p>Patients</p>
                     </a>
