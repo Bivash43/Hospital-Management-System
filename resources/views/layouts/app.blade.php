@@ -22,6 +22,7 @@
     @yield('css')
     <link rel="stylesheet" href="{{ asset('assets/dist/css/custom.css') }}">
     <link rel="stylesheet" href="{{asset('assets/dist/css/customBack.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini layout-footer-fixed">
